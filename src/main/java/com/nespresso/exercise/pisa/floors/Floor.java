@@ -13,12 +13,16 @@ public abstract class Floor
   
   Floor(final int size)
   {
-    this.blocks = Stream.generate(Brick::new).limit(size).toArray(Block[]::new);
+    this.blocks = Stream.generate(Brick::new)
+        .limit(size)
+        .toArray(Block[]::new);
   }
   
   public final String print()
   {
-    return Arrays.stream(blocks).map(Block::print).collect(Collectors.joining());
+    return Arrays.stream(blocks)
+        .map(Block::print)
+        .collect(Collectors.joining());
   }
   
   public final boolean isValidAsHigherFloor(final Floor higherFloor)

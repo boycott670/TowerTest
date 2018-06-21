@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.nespresso.exercise.pisa.floors.Floor;
-import com.nespresso.exercise.pisa.floors.NonWindowedFloor;
-import com.nespresso.exercise.pisa.floors.WindowedFloor;
+import com.nespresso.exercise.pisa.floors.FloorBuilder;
 
 public class Tower
 {
@@ -31,12 +30,16 @@ public class Tower
 
   public void addFloor(int floorSize)
   {
-    checkAndAddHigherFloor(new NonWindowedFloor(floorSize));
+    final Floor higherFloor = new FloorBuilder(floorSize).build();
+    
+    checkAndAddHigherFloor(higherFloor);
   }
   
   public void addFloorWithWindows(int floorSize, int desiredNumberOfWindows)
   {
-    checkAndAddHigherFloor(new WindowedFloor(floorSize, desiredNumberOfWindows));
+    final Floor higherFloor = new FloorBuilder(floorSize).withWindows(desiredNumberOfWindows).build();
+    
+    checkAndAddHigherFloor(higherFloor);
   }
 
   public String printFloor(int floorIndex)
