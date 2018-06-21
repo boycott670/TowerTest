@@ -1,6 +1,6 @@
 package com.nespresso.exercise.pisa.floors;
 
-import com.nespresso.exercise.pisa.blocks.Window;
+import java.util.stream.IntStream;
 
 class WindowedFloor extends Floor
 {
@@ -12,9 +12,6 @@ class WindowedFloor extends Floor
     
     int indexOfLastWindow = indexOfFirstWindow + numberOfWindows - 1;
     
-    for (int index = indexOfFirstWindow ; index <= indexOfLastWindow ; index ++)
-    {
-      blocks[index] = new Window();
-    }
+    IntStream.rangeClosed(indexOfFirstWindow, indexOfLastWindow).forEachOrdered(blocks::setWindow);
   }
 }

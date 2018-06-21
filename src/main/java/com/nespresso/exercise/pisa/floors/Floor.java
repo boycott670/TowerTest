@@ -1,32 +1,21 @@
 package com.nespresso.exercise.pisa.floors;
 
-import java.util.Arrays;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import com.nespresso.exercise.pisa.blocks.Block;
-import com.nespresso.exercise.pisa.blocks.Brick;
-
 public abstract class Floor
 {
-  final Block[] blocks;
+  final Blocks blocks;
   
   Floor(final int size)
   {
-    this.blocks = Stream.generate(Brick::new)
-        .limit(size)
-        .toArray(Block[]::new);
+    this.blocks = Blocks.filledWithBricks(size);
   }
   
   public final String print()
   {
-    return Arrays.stream(blocks)
-        .map(Block::print)
-        .collect(Collectors.joining());
+    return blocks.print();
   }
   
   public final boolean isValidAsHigherFloor(final Floor higherFloor)
   {
-    return higherFloor.blocks.length <= blocks.length;
+    return higherFloor.blocks.size() <= blocks.size();
   }
 }
