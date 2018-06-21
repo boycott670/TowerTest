@@ -20,9 +20,9 @@ public class WindowedFloor extends Floor
     grouping = OptionalInt.empty();
   }
   
-  public void setGrouping(final int grouping)
+  public void setGrouping(final OptionalInt grouping)
   {
-    this.grouping = OptionalInt.of(grouping);
+    this.grouping = grouping;
   }
   
   @Override

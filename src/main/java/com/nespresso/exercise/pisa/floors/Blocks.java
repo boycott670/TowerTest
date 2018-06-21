@@ -12,7 +12,11 @@ public class Blocks
 {
   public static Blocks filledWithBricks(final int size)
   {
-    return new Blocks(Stream.generate(Brick::new).limit(size).toArray(Block[]::new));
+    final Block[] bricks = Stream.generate(Brick::new)
+        .limit(size)
+        .toArray(Block[]::new);
+
+    return new Blocks(bricks);
   }
   
   private final Block[] blocks;
@@ -42,6 +46,8 @@ public class Blocks
   public Blocks group(final int grouping)
   {
     final Block[] groupedBlocks = Arrays.copyOf(blocks, size());
+    
+    /* grouping goes here */
     
     return new Blocks(groupedBlocks);
   }
