@@ -9,7 +9,7 @@ public abstract class Floor
     this.blocks = Blocks.filledWithBricks(size);
   }
   
-  public final String print()
+  public String print()
   {
     return blocks.print();
   }

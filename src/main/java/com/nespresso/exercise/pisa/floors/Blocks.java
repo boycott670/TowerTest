@@ -38,4 +38,11 @@ public class Blocks
   {
     blocks[index] = new Window();
   }
+  
+  public Blocks group(final int grouping)
+  {
+    final Block[] groupedBlocks = Arrays.copyOf(blocks, size());
+    
+    return new Blocks(groupedBlocks);
+  }
 }

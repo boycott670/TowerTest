@@ -1,50 +1,34 @@
 package com.nespresso.exercise.pisa;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.nespresso.exercise.pisa.floors.Floor;
 import com.nespresso.exercise.pisa.floors.FloorBuilder;
 
 public class Tower
 {
-  
-  private final List<Floor> floors;
+  private final Floors floors;
   
   public Tower()
   {
-    floors = new ArrayList<>();
-  }
-  
-  private void checkAndAddHigherFloor(final Floor higherFloor)
-  {
-    if (floors.isEmpty() || floors.get(floors.size() - 1).isValidAsHigherFloor(higherFloor))
-    {
-      floors.add(higherFloor);
-    }
-    else
-    {
-      throw new IllegalArgumentException();
-    }
+    floors = new Floors();
   }
 
   public void addFloor(int floorSize)
   {
     final Floor higherFloor = new FloorBuilder(floorSize).build();
     
-    checkAndAddHigherFloor(higherFloor);
+    floors.addFloor(higherFloor);
   }
   
   public void addFloorWithWindows(int floorSize, int desiredNumberOfWindows)
   {
     final Floor higherFloor = new FloorBuilder(floorSize).withWindows(desiredNumberOfWindows).build();
     
-    checkAndAddHigherFloor(higherFloor);
+    floors.addFloor(higherFloor);
   }
 
   public String printFloor(int floorIndex)
   {
-    return floors.get(floorIndex).print();
+    return floors.print(floorIndex);
   }
 
 }
